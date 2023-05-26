@@ -7,8 +7,8 @@ function Chart({ chart, rank, image, name, artist }) {
   return (
     <div>
       <h1>{rank}</h1>
-      <Link to={`/song/${chart}rank/${rank}`}>
-        <img src={image} alt="album-cover" />
+      <Link to={`/${chart}/${rank}`}>
+        <img src={image} alt="album-jacket" />
       </Link>
       <h2>{name}</h2>
       <h4>{artist}</h4>

@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Chart from "../components/Chart";
 
-function Home() {
-  const chart = "billboard-hot-100";
+function Billboard200() {
+  const chart = "billboard-200";
   // api 가져올 때 loading
   const [loading, setLoading] = useState(true);
   // 화면에 보여줄 곡 목록 설정
@@ -15,7 +15,7 @@ function Home() {
   const getSongs = async () => {
     const json = await (
       await fetch(
-        `https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-hot-100/recent.json`
+        `https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-200/recent.json`
       )
     ).json();
     setSongs(json.data);
@@ -33,7 +33,7 @@ function Home() {
         <h1>Loading...</h1>
       ) : (
         <div>
-          <h1>Billboard Hot 100 Chart</h1>
+          <h1>Billboard 200 Chart</h1>
           {/* 기준 날짜 */}
           <h2>Base Date : {date}</h2>
           {/* 차트를 고르는 버튼 */}
@@ -71,4 +71,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Billboard200;
