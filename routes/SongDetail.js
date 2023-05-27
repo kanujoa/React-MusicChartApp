@@ -1,6 +1,8 @@
 // 노래를 눌렀을 때 detail
 
 import { useState, useEffect } from "react";
+import ArtistInfo from "../components/ArtistInfo";
+import SongInfo from "../components/SongInfo";
 
 function SongDetail() {
   // 현재 주소의 pathname을 가져옴.
@@ -44,38 +46,33 @@ function SongDetail() {
   useEffect(() => {
     getArtistDetail();
   }, [songInfo]); // getArtistDetail 함수는 songInfo에 의존하므로 그것을 계속 주시해야 함.
+  console.log(songInfo.artist);
   return (
     <div>
-      <div>
-        <img src={songInfo.image} alt="album-jacket" />
-      </div>
-      <div>
-        <h1>rank {songInfo.rank}</h1>
-        <h1>{songInfo.name}</h1>
-      </div>
-      <ul>
-        <li>Peak Rank of Song: {songInfo.peak_rank}</li>
-        <li>Last Week Rank of Song: {songInfo.last_week_rank}</li>
-        <li>Weeks on Chart of Song: {songInfo.weeks_on_chart}</li>
-      </ul>
-      {/* <img src={artistInfo.data[0].image} /> */}
-      <div>
-        <h1>Artist's Info</h1>
-        <img src={artistInfo.image} />
-        <h1>{songInfo.artist}</h1>
-      </div>
-      {inArtist100 ? (
-        <ul>
-          <li>Artist's Rank : {artistInfo.rank}</li>
-          <li>Artist's Peak Rank : {artistInfo.peak_rank}</li>
-          <li>Artist's Last Week Rank : {artistInfo.last_week_rank}</li>
-          <li>Artist's Weeks on Chart : {artistInfo.weeks_on_chart}</li>
-        </ul>
-      ) : (
-        <h3>This artist is not in billboard-artist-100 chart now.</h3>
-      )}
+      <SongInfo
+        image={songInfo.image}
+        rank={songInfo.rank}
+        name={songInfo.name}
+        peak={songInfo.peak_rank}
+        lastWeek={songInfo.last_week_rank}
+        weeksOnChart={songInfo.weeks_on_chart}
+      />
+      <ArtistInfo
+        image={artistInfo.image}
+        aritst={songInfo.artist}
+        rank={artistInfo.rank}
+        peak={artistInfo.peak_rank}
+        lastWeek={artistInfo.last_week_rank}
+        weeksOnChart={artistInfo.weeks_on_chart}
+        inArtist100={inArtist100}
+      />
+      {/* a tag에서 target 속성을 "_blank"로 설정하면 외부 링크가 새로운 탭에서 활성화된다.
+      rel 속성의 noopener는 현재 활성화된 페이지와 새로운 탭에서 활성화되는 페이지를 별개의 프로세스로 취급한다. 
+      noreferrer는 현재 활성화된 페이지의 정보를 새로운 탭에서 활성화되는 페이지에 전달하지 않는다. */}
       <a
-        href={`https://www.youtube.com/results?search_query=${songInfo.name} ${songInfo.artist}`}
+        href={`https://www.youtube.com/results?search_query=${songInfo.name}-${songInfo.artist}`}
+        target="_brank"
+        rel="noopener"
       >
         <button>Go To Listen 🎧</button>
       </a>

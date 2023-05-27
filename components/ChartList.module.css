@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nanum+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Patua+One&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  transform: scale(0.8);
+  transform-origin: top;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #2a3952;
+}
+.None {
+  display: none;
+}
+.Hidden {
+  display: hidden;
+}
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1500px; /* container의 width를 정해주면 찌부되지 않음.*/
+  border-radius: 30px;
+  text-align: center;
+  margin: 0 auto; /* 이것의 역할은 요소들을 가운데로 정렬해줌 */
+  color: white;
+}
+.Header {
+  color: black;
+}
+
+.Title {
+  font-size: 50px;
+  background-color: #a2d2df;
+  border-radius: 15px;
+  width: 900px;
+  margin: 0 auto;
+  margin-top: 80px;
+  margin-bottom: 30px;
+  padding: 10px 0;
+  font-family: "Alfa Slab One", cursive;
+}
+
+.Date {
+  width: 400px;
+  background-color: #a2d2df;
+  border-radius: 10px;
+  margin: auto;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  font-family: "Patua One", cursive;
+}
+
+.ChartSelectBtn {
+  margin: 30px 30px 0 30px;
+  color: aliceblue;
+  background-color: #2a3952;
+  border: none;
+  font-size: 40px;
+  font-weight: 700;
+  font-family: "Patua One", cursive;
+  padding-bottom: 10px;
+  border-bottom: 7px solid aliceblue;
+}
+
+.ChartSelectBtn:hover {
+  cursor: pointer;
+  color: #fd7e80;
+  border-bottom: 7px solid #fd7e80;
+}
+
+.MusicChart {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.Song {
+  margin-top: 50px;
+  border-collapse: collapse;
+  border-left: 3px solid white;
+  padding: 0 15px;
+}
+
+.Song h2 {
+  color: white;
+  font-size: 35px;
+}
+
+.Song a {
+  text-decoration: none;
+}
+
+.Song h4 {
+  font-size: 20px;
+}
+
+.Song:first-child {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.Song:nth-child(2) {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+.Song:nth-child(3) {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+.Song:nth-child(4) {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+.Song:nth-child(5) {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.Song:nth-child(-n + 5) {
+  border-right: 3px solid white;
+  border-top: 0.5px solid white;
+  border-bottom: 0.5px solid white;
+  height: 182px;
+}
+
+.Song:first-child h1 {
+  color: goldenrod;
+}
+.Song:nth-child(2) h1 {
+  color: #a7adba;
+}
+.Song:nth-child(3) h1 {
+  color: #967259;
+}
+
+.EdgeSong {
+  border-right: 3px solid white;
+}
+
+.Song:nth-child(-n + 5) div {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 3.5fr 3.5fr;
+  height: 180px;
+}
+
+.Song:nth-child(-n + 5) h1 {
+  margin-left: 35px;
+  line-height: 2.6;
+  font-size: 45px;
+}
+
+.Song:nth-child(-n + 5) a {
+  height: 84px;
+}
+
+.Song:nth-child(-n + 5) img {
+  width: 180px;
+  height: 180px;
+}
+
+.Song:nth-child(-n + 5) h2 {
+  font-size: 45px;
+  width: 600px;
+  margin: 0;
+  line-height: 3.8;
+}
+
+.Song:nth-child(-n + 5) h4 {
+  font-size: 30px;
+  width: 500px;
+  margin: 0;
+  line-height: 6;
+}

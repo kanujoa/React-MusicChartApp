@@ -10,7 +10,9 @@ function Chart({ chart, rank, image, name, artist }) {
       <Link to={`/${chart}/${rank}`}>
         <img src={image} alt="album-jacket" />
       </Link>
-      <h2>{name}</h2>
+      <Link to={`/${chart}/${rank}`}>
+        <h2>{name}</h2>
+      </Link>
       <h4>{artist}</h4>
     </div>
   );

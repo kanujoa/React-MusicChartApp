@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Chart from "../components/Chart";
+import styles from "../components/ChartList.module.css";
 
 function BillboardGlobal200() {
   const chart = "billboard-global-200";
@@ -32,39 +33,63 @@ function BillboardGlobal200() {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div>
-          <h1>Billboard 200 Chart</h1>
-          {/* 기준 날짜 */}
-          <h2>Base Date : {date}</h2>
-          {/* 차트를 고르는 버튼 */}
-          <div>
-            <Link to={`/`}>
-              <button key="billboard-hot-100" id="billboard-hot-100">
-                Billboard Hot 100
-              </button>
-            </Link>
-            <Link to={`/billboard-200`}>
-              <button key="billboard-200" id="billboard-200">
-                Billboard 200
-              </button>
-            </Link>
-            <Link to={`/billboard-global-200`}>
-              <button key="billboard-global-200" id="billboard-global-200">
-                Billboard Global 200
-              </button>
-            </Link>
+        <div className={styles.Container}>
+          <div className={styles.Header}>
+            <h1 className={styles.Title}>Billboard Global 200 Chart</h1>
+            {/* 기준 날짜 */}
+            <h2 className={styles.Date}>Base Date : {date}</h2>
+            {/* 차트를 고르는 버튼 */}
+            <div>
+              <Link to={`/`}>
+                <button
+                  className={styles.ChartSelectBtn}
+                  key="billboard-hot-100"
+                  id="billboard-hot-100"
+                >
+                  Billboard Hot 100
+                </button>
+              </Link>
+              <Link to={`/billboard-200`}>
+                <button
+                  className={styles.ChartSelectBtn}
+                  key="billboard-200"
+                  id="billboard-200"
+                >
+                  Billboard 200
+                </button>
+              </Link>
+              <Link to={`/billboard-global-200`}>
+                <button
+                  className={styles.ChartSelectBtn}
+                  key="billboard-global-200"
+                  id="billboard-global-200"
+                >
+                  Billboard Global 200
+                </button>
+              </Link>
+            </div>
           </div>
           {/* 음원 차트 보여주기 */}
-          {songs.map((song) => (
-            <Chart
-              chart={chart}
-              key={song.rank}
-              rank={song.rank}
-              image={song.image}
-              name={song.name}
-              artist={song.artist}
-            />
-          ))}
+          <div className={styles.MusicChart}>
+            {songs.map((song) => (
+              <div
+                className={
+                  song.rank % 5 === 0 && song.rank !== 5
+                    ? `${styles.Song} ${styles.EdgeSong}`
+                    : styles.Song
+                }
+              >
+                <Chart
+                  chart={chart}
+                  key={song.rank}
+                  rank={song.rank}
+                  image={song.image}
+                  name={song.name}
+                  artist={song.artist}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
