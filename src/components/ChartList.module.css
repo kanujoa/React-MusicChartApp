@@ -18,8 +18,8 @@ body {
 .None {
   display: none;
 }
-.Hidden {
-  display: hidden;
+.Relative {
+  position: relative;
 }
 .Container {
   display: flex;
@@ -88,6 +88,8 @@ body {
   border-collapse: collapse;
   border-left: 3px solid white;
   padding: 0 15px;
+  height: 500px;
+  cursor: default;
 }
 
 .Song h2 {
@@ -108,18 +110,30 @@ body {
   grid-column-end: 6;
   grid-row-start: 1;
   grid-row-end: 2;
+  color: goldenrod;
+}
+.Song:first-child h2 {
+  color: goldenrod;
 }
 .Song:nth-child(2) {
   grid-column-start: 1;
   grid-column-end: 6;
   grid-row-start: 2;
   grid-row-end: 3;
+  color: #a7adba;
+}
+.Song:nth-child(2) h2 {
+  color: #a7adba;
 }
 .Song:nth-child(3) {
   grid-column-start: 1;
   grid-column-end: 6;
   grid-row-start: 3;
   grid-row-end: 4;
+  color: #967259;
+}
+.Song:nth-child(3) h2 {
+  color: #967259;
 }
 .Song:nth-child(4) {
   grid-column-start: 1;
@@ -141,16 +155,6 @@ body {
   height: 182px;
 }
 
-.Song:first-child h1 {
-  color: goldenrod;
-}
-.Song:nth-child(2) h1 {
-  color: #a7adba;
-}
-.Song:nth-child(3) h1 {
-  color: #967259;
-}
-
 .EdgeSong {
   border-right: 3px solid white;
 }
@@ -162,7 +166,7 @@ body {
 }
 
 .Song:nth-child(-n + 5) h1 {
-  margin-left: 35px;
+  margin-right: 12px;
   line-height: 2.6;
   font-size: 45px;
 }
@@ -188,4 +192,29 @@ body {
   width: 500px;
   margin: 0;
   line-height: 6;
+}
+
+.SeeDetailTop {
+  position: relative;
+  background-color: rgb(0, 0, 0, 0.8);
+  bottom: 99%;
+  width: 102%;
+  right: 15px;
+  display: flex;
+  padding-left: 15%;
+  font-family: "Patua One", cursive;
+}
+
+.SeeDetailBottom {
+  background-color: rgb(0, 0, 0, 0.8);
+  position: absolute;
+  width: 182px;
+  height: 182px;
+  left: 42px;
+}
+
+.SeeDetailBottom h2 {
+  position: relative;
+  top: 15%;
+  font-family: "Patua One", cursive;
 }

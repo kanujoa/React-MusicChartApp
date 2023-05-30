@@ -2,9 +2,6 @@ function SongInfo({ image, rank, name, peak, lastWeek, weeksOnChart }) {
   return (
     <div>
       <div>
-        <img src={image} alt="album-jacket" />
-      </div>
-      <div>
         <h1>rank {rank}</h1>
         <h1>{name}</h1>
       </div>

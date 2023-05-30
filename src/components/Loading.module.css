@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Patua+One&display=swap");
+
+.Loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  top: 320px;
+}
+
+.img {
+  width: 300px;
+  height: 300px;
+  animation-name: rotatebox;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotatebox {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.Loading h1 {
+  font-size: 60px;
+  color: aliceblue;
+  font-family: "Patua One", cursive;
+}

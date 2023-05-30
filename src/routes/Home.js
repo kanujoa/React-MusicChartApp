@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Chart from "../components/Chart";
 import styles from "../components/ChartList.module.css";
+import styles2 from "../components/Loading.module.css";
+import loadingImg from "../loading.png";
 
 function Home() {
   const chart = "billboard-hot-100";
@@ -11,6 +13,10 @@ function Home() {
   const [songs, setSongs] = useState([]);
   // 기준 날짜 관리
   const [date, setDate] = useState("");
+  // 마우스 커서가 컴포넌트(<Chart>, 정확히는 Chart의 부모 div)에 올라가 있는지 아닌지 상태관리
+  const [mouseEnter, setMouseEnter] = useState(false);
+  // mouseEnter 이벤트가 일어난 곳의 rank를 기록
+  const [eventRank, setEventRank] = useState("");
   // 맨 처음에는 hot100 노래들로 가져오기 (api의 기본값을 hot100 관련 주소로 함.)
   // api는 한번씩만 받아오게 하기 위해 useEffect 설정
   const getSongs = async () => {
@@ -27,11 +33,23 @@ function Home() {
   useEffect(() => {
     getSongs();
   }, []);
+
+  const onMouseEnter = (e) => {
+    setMouseEnter(true);
+    setEventRank(e.target.parentElement.id);
+  };
+  const onMouseLeave = () => {
+    setMouseEnter(false);
+    setEventRank("");
+  };
   // render
   return (
     <div>
       {loading ? (
-        <h1>Loading...</h1>
+        <div className={styles2.Loading}>
+          <img src={loadingImg} alt="loading" className={styles2.img} />
+          <h1>Loading...</h1>
+        </div>
       ) : (
         <div className={styles.Container}>
           <div className={styles.Header}>
@@ -78,6 +96,9 @@ function Home() {
                     ? `${styles.Song} ${styles.EdgeSong}`
                     : styles.Song
                 }
+                key={`hot100${song.rank}`}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
               >
                 <Chart
                   chart={chart}
@@ -86,7 +107,18 @@ function Home() {
                   image={song.image}
                   name={song.name}
                   artist={song.artist}
+                  eventRank={eventRank}
                 />
+                {song.rank <= 5 && eventRank == song.rank ? (
+                  <div className={styles.SeeDetailTop} id={song.rank}>
+                    <div></div>
+                    <div></div>
+                    <Link to={`/${chart}/${song.rank}`}>
+                      <h2>See Detail 🔍</h2>
+                    </Link>
+                    <div></div>
+                  </div>
+                ) : null}
               </div>
             ))}
           </div>

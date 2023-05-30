@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import ArtistInfo from "../components/ArtistInfo";
 import SongInfo from "../components/SongInfo";
+import styles from "../components/Detail.module.css";
 
 function SongDetail() {
   // 현재 주소의 pathname을 가져옴.
@@ -48,34 +49,44 @@ function SongDetail() {
   }, [songInfo]); // getArtistDetail 함수는 songInfo에 의존하므로 그것을 계속 주시해야 함.
   console.log(songInfo.artist);
   return (
-    <div>
+    <div class={styles.Container}>
+      <div id={styles.FirstBlock}>
+        <img
+          src={songInfo.image}
+          alt="album-jacket"
+          className={styles.Background}
+        />
+      </div>
       <SongInfo
-        image={songInfo.image}
+        className={styles.SongInfo}
         rank={songInfo.rank}
         name={songInfo.name}
         peak={songInfo.peak_rank}
         lastWeek={songInfo.last_week_rank}
         weeksOnChart={songInfo.weeks_on_chart}
       />
-      <ArtistInfo
-        image={artistInfo.image}
-        aritst={songInfo.artist}
-        rank={artistInfo.rank}
-        peak={artistInfo.peak_rank}
-        lastWeek={artistInfo.last_week_rank}
-        weeksOnChart={artistInfo.weeks_on_chart}
-        inArtist100={inArtist100}
-      />
       {/* a tag에서 target 속성을 "_blank"로 설정하면 외부 링크가 새로운 탭에서 활성화된다.
       rel 속성의 noopener는 현재 활성화된 페이지와 새로운 탭에서 활성화되는 페이지를 별개의 프로세스로 취급한다. 
-      noreferrer는 현재 활성화된 페이지의 정보를 새로운 탭에서 활성화되는 페이지에 전달하지 않는다. */}
+    noreferrer는 현재 활성화된 페이지의 정보를 새로운 탭에서 활성화되는 페이지에 전달하지 않는다. */}
       <a
         href={`https://www.youtube.com/results?search_query=${songInfo.name}-${songInfo.artist}`}
         target="_brank"
         rel="noopener"
       >
-        <button>Go To Listen 🎧</button>
+        <button className={styles.Listen}>Go To Listen 🎧</button>
       </a>
+      <div className={styles.SecondBlock}>
+        <ArtistInfo
+          className={styles.ArtistInfo}
+          image={artistInfo.image}
+          aritst={songInfo.artist}
+          rank={artistInfo.rank}
+          peak={artistInfo.peak_rank}
+          lastWeek={artistInfo.last_week_rank}
+          weeksOnChart={artistInfo.weeks_on_chart}
+          inArtist100={inArtist100}
+        />
+      </div>
     </div>
   );
 }

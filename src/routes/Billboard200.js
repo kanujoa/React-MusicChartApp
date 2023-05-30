@@ -3,20 +3,24 @@ import { Link } from "react-router-dom";
 import Chart from "../components/Chart";
 import styles from "../components/ChartList.module.css";
 
-function BillboardGlobal200() {
-  const chart = "billboard-global-200";
+function Billboard200() {
+  const chart = "billboard-200";
   // api 가져올 때 loading
   const [loading, setLoading] = useState(true);
   // 화면에 보여줄 곡 목록 설정
   const [songs, setSongs] = useState([]);
   // 기준 날짜 관리
   const [date, setDate] = useState("");
+  // 마우스 커서가 컴포넌트(<Chart>, 정확히는 Chart의 부모 div)에 올라가 있는지 아닌지 상태관리
+  const [mouseEnter, setMouseEnter] = useState(false);
+  // mouseEnter 이벤트가 일어난 곳의 rank를 기록
+  const [eventRank, setEventRank] = useState("");
   // 맨 처음에는 hot100 노래들로 가져오기 (api의 기본값을 hot100 관련 주소로 함.)
   // api는 한번씩만 받아오게 하기 위해 useEffect 설정
   const getSongs = async () => {
     const json = await (
       await fetch(
-        `https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-global-200/recent.json`
+        `https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-200/recent.json`
       )
     ).json();
     setSongs(json.data);
@@ -27,6 +31,15 @@ function BillboardGlobal200() {
   useEffect(() => {
     getSongs();
   }, []);
+
+  const onMouseEnter = (e) => {
+    setMouseEnter(true);
+    setEventRank(e.target.parentElement.id);
+  };
+  const onMouseLeave = () => {
+    setMouseEnter(false);
+    setEventRank("");
+  };
   // render
   return (
     <div>
@@ -35,9 +48,9 @@ function BillboardGlobal200() {
       ) : (
         <div className={styles.Container}>
           <div className={styles.Header}>
-            <h1 className={styles.Title}>Billboard Global 200 Chart</h1>
+            <h1 className={styles.Title}>🎵 Billboard 200 Chart 🎵</h1>
             {/* 기준 날짜 */}
-            <h2 className={styles.Date}>Base Date : {date}</h2>
+            <h2 className={styles.Date}>📆 Base Date : {date}</h2>
             {/* 차트를 고르는 버튼 */}
             <div>
               <Link to={`/`}>
@@ -78,6 +91,9 @@ function BillboardGlobal200() {
                     ? `${styles.Song} ${styles.EdgeSong}`
                     : styles.Song
                 }
+                key={`hot100${song.rank}`}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
               >
                 <Chart
                   chart={chart}
@@ -86,7 +102,18 @@ function BillboardGlobal200() {
                   image={song.image}
                   name={song.name}
                   artist={song.artist}
+                  eventRank={eventRank}
                 />
+                {song.rank <= 5 && eventRank == song.rank ? (
+                  <div className={styles.SeeDetailTop} id={song.rank}>
+                    <div></div>
+                    <div></div>
+                    <Link to={`/${chart}/${song.rank}`}>
+                      <h2>See Detail 🔍</h2>
+                    </Link>
+                    <div></div>
+                  </div>
+                ) : null}
               </div>
             ))}
           </div>
@@ -96,4 +123,4 @@ function BillboardGlobal200() {
   );
 }
 
-export default BillboardGlobal200;
+export default Billboard200;
