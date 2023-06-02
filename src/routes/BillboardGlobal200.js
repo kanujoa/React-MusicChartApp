@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Chart from "../components/Chart";
 import styles from "../components/ChartList.module.css";
+import styles2 from "../components/Loading.module.css";
+import loadingImg from "../loading.png";
 
 function BillboardGlobal200() {
   const chart = "billboard-global-200";
@@ -43,7 +45,10 @@ function BillboardGlobal200() {
   return (
     <div>
       {loading ? (
-        <h1>Loading...</h1>
+        <div className={styles2.Loading}>
+          <img src={loadingImg} alt="loading" className={styles2.img} />
+          <h1>Loading...</h1>
+        </div>
       ) : (
         <div className={styles.Container}>
           <div className={styles.Header}>

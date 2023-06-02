@@ -1,3 +1,6 @@
+import styles from "../components/Detail.module.css";
+import profile from "../profile.png";
+
 function ArtistInfo({
   image,
   artist,
@@ -8,21 +11,23 @@ function ArtistInfo({
   inArtist100,
 }) {
   return (
-    <div>
-      <div>
-        <h1>Artist's Info</h1>
-        {image === undefined ? null : <img src={image} />}
-        <h1>{artist}</h1>
-      </div>
+    <div className={styles.SecondBlock}>
+      <h1 className={styles.Title}>Artist Info</h1>
+      {image === undefined ? <img src={profile} /> : <img src={image} />}
       {inArtist100 ? (
-        <ul>
-          <li>Artist's Rank : {rank}</li>
-          <li>Artist's Peak Rank : {peak}</li>
-          <li>Artist's Last Week Rank : {lastWeek}</li>
-          <li>Artist's Weeks on Chart : {weeksOnChart}</li>
-        </ul>
+        <div>
+          <h1 className={styles.ArtistName}>{artist}</h1>
+          <ul className={styles.ArtistInfo}>
+            <li>Artist's Rank : {rank}</li>
+            <li>Artist's Peak Rank : {peak}</li>
+            <li>Artist's Last Week Rank : {lastWeek}</li>
+            <li>Artist's Weeks on Chart : {weeksOnChart}</li>
+          </ul>
+        </div>
       ) : (
-        <h3>This artist is not in billboard-artist-100 chart now.</h3>
+        <h3 className={styles.NotinChart}>
+          {artist} is not in billboard-artist-100 chart now.
+        </h3>
       )}
     </div>
   );

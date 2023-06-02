@@ -1,23 +1,88 @@
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Patua+One&display=swap");
+
 body {
   transform: scale(1);
 }
 
 .Container {
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
+  display: grid;
+  grid-template-rows: 1.3fr 1fr;
+  min-height: 100vh;
+  margin: 0 auto;
+  width: 1500px;
 }
+
 .FirstBlock {
-  padding: 50px 0 0 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.SecondBlock {
-  display: absolute;
+.FirstLeft {
+  margin-right: 150px;
 }
 
-.SongInfo {
+.SongImage {
+  width: 350px;
+  height: 350px;
+  box-shadow: 20px 20px rgb(255, 255, 255, 0.3);
+}
+
+.SongRank,
+.SongName {
+  font-size: 70px;
+  font-family: "Patua One", cursive;
+  color: white;
+  text-align: center;
+}
+
+.SongRank1 {
+  font-size: 70px;
+  font-family: "Patua One", cursive;
+  color: goldenrod;
+  text-align: center;
+}
+
+.SongRank2 {
+  font-size: 70px;
+  font-family: "Patua One", cursive;
+  color: #a7adba;
+  text-align: center;
+}
+
+.SongRank3 {
+  font-size: 70px;
+  font-family: "Patua One", cursive;
+  color: #967259;
+  text-align: center;
+}
+
+.SongName {
+  text-align: center;
+}
+
+.RankInfo {
+  list-style: none;
+}
+
+.RankInfo li {
+  font-size: 37px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: all 2ms;
+}
+
+.RankInfo li p {
   display: inline-block;
+  margin: 0;
+  color: #fd7e80;
+}
+
+.ListenAddress {
+  text-decoration: none;
 }
 
 .Listen {
@@ -28,6 +93,10 @@ body {
   border-radius: 10px;
   box-shadow: 0 3px 3px 0;
   cursor: pointer;
+  display: block;
+  position: relative;
+  top: 60px;
+  left: 45px;
 }
 
 .Listen:hover {
@@ -175,4 +244,61 @@ body {
   100% {
     color: #ff0080;
   }
+}
+
+.SecondBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  border-top: 5px dashed white;
+}
+
+.Title {
+  font-size: 45px;
+  color: aliceblue;
+  font-family: "Patua One", cursive;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 5px solid aliceblue;
+  margin-right: 100px;
+  position: relative;
+  bottom: 80px;
+}
+
+.SecondBlock img {
+  width: 250px;
+  height: 250px;
+  margin-right: 150px;
+  position: relative;
+  top: 20px;
+}
+
+.ArtistName {
+  color: aliceblue;
+  font-family: "Patua One", cursive;
+  font-size: 50px;
+  margin: 0;
+}
+
+.ArtistInfo {
+  list-style: square;
+  margin: 0;
+  padding-bottom: 20px;
+  position: relative;
+  top: 55px;
+}
+
+.ArtistInfo li {
+  font-size: 30px;
+  font-weight: 700;
+  color: white;
+  padding-bottom: 20px;
+}
+
+.NotinChart {
+  font-size: 30px;
+  color: white;
+  width: 700px;
 }
