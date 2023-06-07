@@ -18,10 +18,15 @@ function ArtistInfo({
         <div>
           <h1 className={styles.ArtistName}>{artist}</h1>
           <ul className={styles.ArtistInfo}>
-            <li>Artist's Rank : {rank}</li>
-            <li>Artist's Peak Rank : {peak}</li>
-            <li>Artist's Last Week Rank : {lastWeek}</li>
-            <li>Artist's Weeks on Chart : {weeksOnChart}</li>
+            <li>Artist's Rank : {rank != null ? rank : "-"}</li>
+            <li>Artist's Peak Rank : {peak != null ? peak : "-"}</li>
+            <li>
+              Artist's Last Week Rank : {lastWeek != null ? lastWeek : "-"}
+            </li>
+            <li>
+              Artist's Weeks on Chart :{" "}
+              {weeksOnChart != null ? weeksOnChart : "-"}
+            </li>
           </ul>
         </div>
       ) : (

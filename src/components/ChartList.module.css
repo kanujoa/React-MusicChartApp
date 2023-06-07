@@ -8,7 +8,7 @@ html {
   height: 100%;
 }
 body {
-  transform: scale(0.8);
+  zoom: 0.8;
   transform-origin: top;
   width: 100%;
   margin: 0;

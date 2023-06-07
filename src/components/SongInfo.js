@@ -18,13 +18,14 @@ function SongInfo({ rank, name, peak, lastWeek, weeksOnChart }) {
       </div>
       <ul className={styles.RankInfo}>
         <li class="animate__animated animate__bounce">
-          📶 Peak Rank of Song : <p>{peak}</p>
+          📶 Peak Rank of Song : <p>{peak != null ? peak : "-"}</p>
         </li>
         <li class="animate__animated animate__bounce">
-          📶 Last Week Rank of Song : <p>{lastWeek}</p>
+          📶 Last Week Rank of Song : <p>{lastWeek != null ? lastWeek : "-"}</p>
         </li>
         <li class="animate__animated animate__bounce">
-          📶 Weeks on Chart of Song : <p>{weeksOnChart}</p>
+          📶 Weeks on Chart of Song :{" "}
+          <p>{weeksOnChart != null ? weeksOnChart : "-"}</p>
         </li>
       </ul>
     </div>

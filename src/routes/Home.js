@@ -53,7 +53,9 @@ function Home() {
       ) : (
         <div className={styles.Container}>
           <div className={styles.Header}>
-            <h1 className={styles.Title}>🎵 Billboard Hot 100 Chart 🎵</h1>
+            <h1 className={styles.Title} data-shadow="Billboard Hot 100 Chart">
+              🎵 Billboard Hot 100 Chart 🎵
+            </h1>
             {/* 기준 날짜 */}
             <h2 className={styles.Date}>📆 Base Date : {date}</h2>
             {/* 차트를 고르는 버튼 */}

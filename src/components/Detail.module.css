@@ -1,13 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Patua+One&display=swap");
 
-body {
-  transform: scale(1);
-}
-
 .Container {
   display: grid;
   grid-template-rows: 1.3fr 1fr;
-  min-height: 100vh;
+  height: 1140px;
   margin: 0 auto;
   width: 1500px;
 }
@@ -17,6 +13,8 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-top: 35px;
+  padding-bottom: 65px;
 }
 
 .FirstLeft {
