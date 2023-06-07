@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# React-MusicChartApp
+### React로 Billboard 차트 앱 만들기 
+### ⭐ 완성작 site ➡️ https://leafy-chimera-43efb2.netlify.app/ ⭐
+>>>>>>> 1318ba933cf0282b5c28235d4bd2b1d57c4ffa3f
